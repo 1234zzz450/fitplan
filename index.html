@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitPlan 智能健身计划生成器</title>
+<meta name="description" content="根据你的目标、经验、时间和器材，智能生成专属健身计划。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#home"><span class="brand-mark">F</span><span>FitPlan</span></a>
+    <nav class="nav">
+      <a href="#how">如何使用</a>
+      <a href="#builder">生成计划</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="tag">AI 智能匹配 · 免费使用</span>
+        <h1>别再盲目健身，<br><em>让计划为你量身定制</em></h1>
+        <p class="lead">回答 10 个问题，得到一份适合你的每周训练计划——按训练年限科学安排分化，每个部位多角度针对训练，每天练什么、做几组、休息多久一目了然。无需注册，即刻生成。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#builder">开始生成我的计划 <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#how">先看看怎么用</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>78</strong><span>训练动作库</span></div>
+          <div><strong>10</strong><span>个性化维度</span></div>
+          <div><strong>30–90</strong><span>单次训练分钟</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-head"><span class="dot dot-orange"></span><span class="dot dot-teal"></span> 今日训练</div>
+          <div class="phone-card">
+            <span class="phone-label">第 1 天 · 全身训练</span>
+            <div class="phone-row"><span>徒手深蹲</span><b>3 × 12</b></div>
+            <div class="phone-row"><span>跪姿俯卧撑</span><b>3 × 10</b></div>
+            <div class="phone-row"><span>臀桥</span><b>3 × 15</b></div>
+            <div class="phone-row"><span>平板支撑</span><b>3 × 30s</b></div>
+          </div>
+          <div class="phone-bar"><i style="width:78%"></i></div>
+          <div class="phone-foot">预计用时 45 分钟 · 强度 中等</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="how">
+    <div class="wrap">
+      <h2 class="section-title">三步，拿到你的专属计划</h2>
+      <p class="section-sub">整个过程不到一分钟，不需要任何健身知识。</p>
+      <div class="step-cards">
+        <div class="step-card"><div class="step-num">01</div><h3>细致回答</h3><p>目标、周期、经验、周天数、单次时长、器材、薄弱部位、是否练腿等共 10 个维度。</p></div>
+        <div class="step-card"><div class="step-num">02</div><h3>智能匹配</h3><p>按训练年限选分化方案，每个部位多角度覆盖，并强化你的薄弱肌群。</p></div>
+        <div class="step-card"><div class="step-num">03</div><h3>开始训练</h3><p>按阶段执行，每个动作都有要点提示，还能保存下来。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="builder" class="builder">
+    <div class="wrap">
+      <h2 class="section-title">生成你的健身计划</h2>
+      <p class="section-sub">回答 10 个问题，越细致，计划越贴合你。随时可以返回修改。</p>
+
+      <div class="progress" id="progress">
+        <div class="progress-step active" data-step="1"><span>1</span>目标</div>
+        <div class="progress-step" data-step="2"><span>2</span>周期</div>
+        <div class="progress-step" data-step="3"><span>3</span>性别</div>
+        <div class="progress-step" data-step="4"><span>4</span>经验</div>
+        <div class="progress-step" data-step="5"><span>5</span>周天数</div>
+        <div class="progress-step" data-step="6"><span>6</span>单次时长</div>
+        <div class="progress-step" data-step="7"><span>7</span>器材</div>
+        <div class="progress-step" data-step="8"><span>8</span>补强</div>
+        <div class="progress-step" data-step="9"><span>9</span>避让</div>
+        <div class="progress-step" data-step="10"><span>10</span>练腿</div>
+      </div>
+
+      <form id="planForm" class="wizard">
+        <fieldset class="q-step active" data-step="1">
+          <legend>你最想达成的目标是什么？<span class="optional">（可多选）</span></legend>
+          <p class="q-hint">目标越具体，权重越高。可同时选 1–2 个重点。</p>
+          <div class="options options-multi" data-field="goal">
+            <label class="option"><input type="checkbox" name="goal" value="fatloss"><span class="opt-text"><b>减脂瘦身</b><small>降低体脂率</small></span></label>
+            <label class="option"><input type="checkbox" name="goal" value="muscle"><span class="opt-text"><b>增大肌肉</b><small>增加肌肉围度</small></span></label>
+            <label class="option"><input type="checkbox" name="goal" value="strength"><span class="opt-text"><b>增强力量</b><small>提高负重能力</small></span></label>
+            <label class="option"><input type="checkbox" name="goal" value="endurance"><span class="opt-text"><b>提升耐力</b><small>心肺与肌耐力</small></span></label>
+            <label class="option"><input type="checkbox" name="goal" value="tone"><span class="opt-text"><b>塑形紧致</b><small>线条与紧实度</small></span></label>
+            <label class="option"><input type="checkbox" name="goal" value="posture"><span class="opt-text"><b>改善体态</b><small>圆肩驼背等</small></span></label>
+            <label class="option"><input type="checkbox" name="goal" value="health"><span class="opt-text"><b>健康养生</b><small>强身健体</small></span></label>
+            <label class="option"><input type="checkbox" name="goal" value="none"><span class="opt-text"><b>没有特别目标</b></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="2">
+          <legend>你打算坚持这个计划多久？</legend>
+          <p class="q-hint">周期不同，阶段划分和强度递进也不同。</p>
+          <div class="options options-days" data-field="duration">
+            <label class="option"><input type="radio" name="duration" value="1m"><span class="opt-text"><b>1 个月</b><small>短期尝试</small></span></label>
+            <label class="option"><input type="radio" name="duration" value="3m"><span class="opt-text"><b>3 个月</b><small>养成习惯</small></span></label>
+            <label class="option"><input type="radio" name="duration" value="6m"><span class="opt-text"><b>6 个月</b><small>系统塑形</small></span></label>
+            <label class="option"><input type="radio" name="duration" value="1y"><span class="opt-text"><b>1 年</b><small>长期改变</small></span></label>
+            <label class="option"><input type="radio" name="duration" value="5y"><span class="opt-text"><b>5 年+</b><small>终身习惯</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="3">
+          <legend>你的性别是？</legend>
+          <p class="q-hint">用于微调训练侧重与参考建议，不影响动作可选择性。</p>
+          <div class="options" data-field="gender">
+            <label class="option"><input type="radio" name="gender" value="female"><span class="opt-icon">♀</span><span class="opt-text"><b>女性</b><small>侧重塑形、臀腿与核心</small></span></label>
+            <label class="option"><input type="radio" name="gender" value="male"><span class="opt-icon">♂</span><span class="opt-text"><b>男性</b><small>侧重力量、胸背与肩臂</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="4">
+          <legend>你目前的训练经验如何？</legend>
+          <p class="q-hint">我们会据此控制动作难度，避免太难或太简单。</p>
+          <div class="options" data-field="level">
+            <label class="option"><input type="radio" name="level" value="beginner"><span class="opt-icon">●</span><span class="opt-text"><b>新手</b><small>几乎没练过 / 刚开始</small></span></label>
+            <label class="option"><input type="radio" name="level" value="intermediate"><span class="opt-icon">●●</span><span class="opt-text"><b>有一定基础</b><small>规律训练 3 个月以上</small></span></label>
+            <label class="option"><input type="radio" name="level" value="advanced"><span class="opt-icon">●●●</span><span class="opt-text"><b>经验丰富</b><small>系统训练一年以上</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="5">
+          <legend>每周大概能练几天？</legend>
+          <p class="q-hint">计划会按天数自动安排分化方式。</p>
+          <div class="options options-days" data-field="days">
+            <label class="option"><input type="radio" name="days" value="2"><span class="opt-text"><b>2 天</b><small>时间紧张</small></span></label>
+            <label class="option"><input type="radio" name="days" value="3"><span class="opt-text"><b>3 天</b><small>经典起步</small></span></label>
+            <label class="option"><input type="radio" name="days" value="4"><span class="opt-text"><b>4 天</b><small>上下肢分化</small></span></label>
+            <label class="option"><input type="radio" name="days" value="5"><span class="opt-text"><b>5 天</b><small>进阶频率</small></span></label>
+            <label class="option"><input type="radio" name="days" value="6"><span class="opt-text"><b>6 天</b><small>高频训练</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="6">
+          <legend>单次训练大概能练多久？</legend>
+          <p class="q-hint">时长决定每天安排多少动作——时间越充裕，覆盖的细分部位越全面。</p>
+          <div class="options options-days" data-field="session">
+            <label class="option"><input type="radio" name="session" value="30"><span class="opt-text"><b>30 分钟</b><small>精简高效</small></span></label>
+            <label class="option"><input type="radio" name="session" value="45"><span class="opt-text"><b>45 分钟</b><small>标准时长</small></span></label>
+            <label class="option"><input type="radio" name="session" value="60"><span class="opt-text"><b>60 分钟</b><small>从容训练</small></span></label>
+            <label class="option"><input type="radio" name="session" value="90"><span class="opt-text"><b>90 分钟+</b><small>充分训练</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="7">
+          <legend>你有哪些可用的器材？</legend>
+          <p class="q-hint">只会推荐你用得上的动作。</p>
+          <div class="options" data-field="equipment">
+            <label class="option"><input type="radio" name="equipment" value="none"><span class="opt-icon">⌂</span><span class="opt-text"><b>徒手 / 无器材</b><small>在家也能练</small></span></label>
+            <label class="option"><input type="radio" name="equipment" value="home"><span class="opt-icon">◇</span><span class="opt-text"><b>居家小器材</b><small>哑铃、弹力带等</small></span></label>
+            <label class="option"><input type="radio" name="equipment" value="gym"><span class="opt-icon">▣</span><span class="opt-text"><b>健身房</b><small>杠铃、器械齐全</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="8">
+          <legend>哪些部位你觉得比较薄弱，想重点补强？<span class="optional">（可多选，可跳过）</span></legend>
+          <p class="q-hint">选中的部位会获得更多训练量和优先编排。</p>
+          <div class="options options-multi" data-field="focus">
+            <label class="option"><input type="checkbox" name="focus" value="chest"><span class="opt-text"><b>胸部</b></span></label>
+            <label class="option"><input type="checkbox" name="focus" value="back"><span class="opt-text"><b>背部</b></span></label>
+            <label class="option"><input type="checkbox" name="focus" value="shoulder"><span class="opt-text"><b>肩部</b></span></label>
+            <label class="option"><input type="checkbox" name="focus" value="arm"><span class="opt-text"><b>手臂</b></span></label>
+            <label class="option"><input type="checkbox" name="focus" value="core"><span class="opt-text"><b>核心</b></span></label>
+            <label class="option"><input type="checkbox" name="focus" value="leg"><span class="opt-text"><b>腿部</b></span></label>
+            <label class="option"><input type="checkbox" name="focus" value="glute"><span class="opt-text"><b>臀部</b></span></label>
+            <label class="option"><input type="checkbox" name="focus" value="none"><span class="opt-text"><b>无需补强</b></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="9">
+          <legend>有没有需要回避的部位？<span class="optional">（可跳过）</span></legend>
+          <p class="q-hint">我们会减少对该部位压力较大的动作。</p>
+          <div class="options options-multi" data-field="avoid">
+            <label class="option"><input type="checkbox" name="avoid" value="knee"><span class="opt-text"><b>膝盖不适</b></span></label>
+            <label class="option"><input type="checkbox" name="avoid" value="shoulder"><span class="opt-text"><b>肩部不适</b></span></label>
+            <label class="option"><input type="checkbox" name="avoid" value="waist"><span class="opt-text"><b>腰部不适</b></span></label>
+            <label class="option"><input type="checkbox" name="avoid" value="none"><span class="opt-text"><b>都没有 / 不确定</b></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="10">
+          <legend>要不要安排练腿？</legend>
+          <p class="q-hint">很多人不爱练腿，这一项完全按你的喜好来——选“不练腿”后，腿日会改为上肢训练，计划里不再出现腿部动作。</p>
+          <div class="options" data-field="legs">
+            <label class="option"><input type="radio" name="legs" value="yes" checked><span class="opt-icon">✓</span><span class="opt-text"><b>正常练腿</b><small>推荐，腿是力量与健康的基础</small></span></label>
+            <label class="option"><input type="radio" name="legs" value="light"><span class="opt-icon">◐</span><span class="opt-text"><b>少量练腿</b><small>每次最多 2 个腿部动作</small></span></label>
+            <label class="option"><input type="radio" name="legs" value="no"><span class="opt-icon">✕</span><span class="opt-text"><b>不练腿</b><small>腿日改成上肢，全程无腿部动作</small></span></label>
+          </div>
+        </fieldset>
+
+        <div class="wizard-nav">
+          <button type="button" class="btn btn-ghost" id="prevBtn" hidden>← 上一步</button>
+          <button type="button" class="btn btn-primary" id="nextBtn">下一步 →</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn" hidden>生成我的计划 ✦</button>
+        </div>
+        <p class="form-error" id="formError" role="alert" hidden>请先选择一个选项</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="result" class="result" hidden>
+    <div class="wrap">
+      <div class="result-head">
+        <div>
+          <span class="tag">为你生成</span>
+          <h2 id="resultTitle">你的专属训练计划</h2>
+          <p id="resultSummary"></p>
+        </div>
+        <div class="result-actions">
+          <button class="btn btn-ghost" id="regenBtn">↻ 换一批动作</button>
+          <button class="btn btn-primary" id="saveBtn">保存计划</button>
+        </div>
+      </div>
+      <div class="tip-banner" id="aiTip"></div>
+      <div class="coach-banner">
+        <span class="coach-banner-title">动作跟学推荐</span>
+        <span><b>谭成义</b> · 腿 / 背 / 基础复合动作</span>
+        <span><b>凯圣王</b> · 胸 / 肩 / 推日编排</span>
+        <span><b>粗人健身</b> · 减脂有氧 / 训练计划</span>
+        <small>在每个动作详情里也会标注对应博主，在 B站 / 抖音搜索名字即可找到教学视频。</small>
+      </div>
+      <div class="phase-panel" id="phasePanel" hidden>
+        <h3>分阶段训练规划 <span id="phaseDurationLabel"></span></h3>
+        <div class="phase-list" id="phaseList"></div>
+      </div>
+      <div class="day-tabs" id="dayTabs" role="tablist"></div>
+      <div class="day-content" id="dayContent"></div>
+      <p class="disclaimer">提示：本计划由规则算法根据通用健身原则生成，仅供健康人群参考。如有伤病、慢性疾病或特殊身体状况，请先咨询医生或专业教练。</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>FitPlan · 智能健身计划生成器</span>
+    <span>《人工智能基础与应用》课程大作业</span>
+  </div>
+</footer>
+
+<script src="animate.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
